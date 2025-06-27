@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Fetch credentials from environment
-region = os.getenv("AWS_REGION")
+REGION = os.getenv("AWS_DEFAULT_REGION", "us-east-1")
 access_key = os.getenv("AWS_ACCESS_KEY_ID")
 secret_key = os.getenv("AWS_SECRET_ACCESS_KEY")
 
@@ -21,13 +21,13 @@ logger = logging.getLogger(__name__)
 # AWS clients Initialization
 try:
     s3 = boto3.client('s3',
-                      region_name=region,
+                      region_name=REGION,
                      aws_access_key_id=access_key,
                      aws_secret_access_key=secret_key)
     translate = boto3.client('translate',
-                              region_name=region,
+                              region_name=REGION,
                               aws_access_key_id=access_key,
-                              aws_secret_access_key=secret_key )
+                              aws_secret_access_key=secret_key)
 except Exception as e:
     st.error(f"AWS client initialization failed: {str(e)}")
     st.stop()
