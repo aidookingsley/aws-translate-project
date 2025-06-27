@@ -10,21 +10,23 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Fetch credentials from environment
-REGION = os.getenv("AWS_REGION")
-access_key = os.getenv("AWS_ACCESS_KEY_ID")
-secret_key = os.getenv("AWS_SECRET_ACCESS_KEY")
+REGION = st.secrets["AWS_REGION"]
+access_key = st.secrets["AWS_ACCESS_KEY_ID"]
+secret_key = st.secrets["AWS_SECRET_ACCESS_KEY"]
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # AWS clients Initialization
-try:
-    s3 = boto3.client('s3')
-    translate = boto3.client('translate')
-except Exception as e:
-    st.error(f"AWS client initialization failed: {str(e)}")
-    st.stop()
+session = boto3.Session(
+    aws_access_key_id=access_key,
+    aws_secret_access_key=secret_key,
+    region_name=REGION
+)
+s3 = session.client('s3')
+translate = session.client('translate')
+
 
 # Constants
 INPUT_BUCKET = "resilient-translate-input-bucket"
