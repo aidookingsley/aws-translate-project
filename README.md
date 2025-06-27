@@ -126,9 +126,11 @@ Users can input text manually or upload files to be translated automatically usi
 
     - Dockerization for easier deployment.
 
+
 10. **📄 License**
-        ```
-        This project is for educational purposes. Feel free to adapt or reuse the code with attribution.
+    ```
+    This project is for educational purposes. Feel free to adapt or reuse the code with attribution.
+
 
 11. **Capstone Project Group Members**
     ```
