@@ -1,16 +1,8 @@
-from gettext import translation
-from http import client
-from urllib import response
 import json
-from turtle import pu
-from typing import Text
-from unittest import result
 import boto3
 import logging
 from botocore.exceptions import ClientError
-from lark import logger
 from datetime import datetime
-from regex import B
 
 
 # Configure logging
