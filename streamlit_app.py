@@ -10,9 +10,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Fetch credentials from environment
-REGION = st.secrets["AWS_REGION"]
-access_key = st.secrets["AWS_ACCESS_KEY_ID"]
-secret_key = st.secrets["AWS_SECRET_ACCESS_KEY"]
+REGION = os.getenv("AWS_REGION")
+access_key = os.getenv("AWS_ACCESS_KEY_ID")
+secret_key = os.getenv("AWS_SECRET_ACCESS_KEY")
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
